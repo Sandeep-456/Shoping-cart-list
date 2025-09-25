@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cgOvfKPVZKKnQ5IJr5ghg",
+    "name": "apple",
+    "quantity": 1,
+    "category": "fruit",
+    "note": "For the morning."
+  },
+  {
+    "id": "uCRWmZDJcctCErlQE5due",
+    "name": "mobile",
+    "quantity": 2,
+    "category": "Gadget",
+    "note": "under 25k"
+  }
+]

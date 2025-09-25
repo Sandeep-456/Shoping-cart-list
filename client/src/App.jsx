@@ -5,7 +5,21 @@ import { FaCartShopping } from "react-icons/fa6";
 
 const initialFilters = { query: "", category: "All" };
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
+const getBackendUrl = () => {
+  const { hostname } = window.location;
+  if (
+    hostname ===
+    "shoping-cart-list-aj5wfxpfi-sandys-projects-e9cf1f4a.vercel.app"
+  ) {
+    return "https://shoping-cart-list.onrender.com";
+  }
+  if (hostname === "localhost" || hostname === "127.0.0.1") {
+    return "http://localhost:4000";
+  }
+  return "https://shoping-cart-list.onrender.com";
+};
+
+const backendUrl = getBackendUrl();
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -17,7 +31,7 @@ export default function App() {
   async function fetchItems() {
     try {
       setLoading(true);
-      const res = await fetch("/api/items");
+      const res = await fetch(`${backendUrl}/api/items`);
       if (!res.ok) throw new Error("Failed to load items");
       const data = await res.json();
       setItems(data);
@@ -35,7 +49,7 @@ export default function App() {
 
   async function addItem(payload) {
     try {
-      const res = await fetch(`${apiBaseUrl}/api/items`, {
+      const res = await fetch(`${backendUrl}/api/items`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -50,7 +64,7 @@ export default function App() {
 
   async function updateItem(id, payload) {
     try {
-      const res = await fetch(`${apiBaseUrl}/api/items/${id}`, {
+      const res = await fetch(`${backendUrl}/api/items/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -67,7 +81,9 @@ export default function App() {
   async function deleteItem(id) {
     if (!confirm("Delete this item?")) return;
     try {
-      const res = await fetch(`/api/items/${id}`, { method: "DELETE" });
+      const res = await fetch(`${backendUrl}/api/items/${id}`, {
+        method: "DELETE",
+      });
       if (!res.ok) throw new Error("Failed to delete item");
       setItems((prev) => prev.filter((i) => i.id !== id));
     } catch (err) {

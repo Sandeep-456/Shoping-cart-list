@@ -45,7 +45,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173", // local dev
   "http://127.0.0.1:5173",
-  "https://shoping-cart-list-git-main-sandys-projects-e9cf1f4a.vercel.app", // vercel
+  "https://shoping-cart-list-aj5wfxpfi-sandys-projects-e9cf1f4a.vercel.app", // vercel
 ];
 
 const corsOptions = {

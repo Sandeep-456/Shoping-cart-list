@@ -9,7 +9,7 @@ const getBackendUrl = () => {
   const { hostname } = window.location;
   if (
     hostname ===
-    "shoping-cart-list-aj5wfxpfi-sandys-projects-e9cf1f4a.vercel.app"
+    "shoping-cart-list-2zuqk4wnq-sandys-projects-e9cf1f4a.vercel.app"
   ) {
     return "https://shoping-cart-list.onrender.com";
   }
